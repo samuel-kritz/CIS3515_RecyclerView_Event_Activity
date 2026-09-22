@@ -12,19 +12,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Set up RecyclerView display responsibility
-        val numbers = Array(100) {it + 1}
+        val numbers = Array(100) { it + 1 }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val displayTextView = findViewById<TextView>(R.id.displayTextView)
         recyclerView.layoutManager = GridLayoutManager(this, 4)
 
         // TODO (Step 2: Define lambda to modify displayTextView size)
-        val callback : (Int) -> Unit = {}
+//        val callback : (Int) -> Unit = {
+//            displayTextView.textSize = it.toFloat()
+//    }
+//        val callback = {textSize : Int ->
+//            displayTextView.textSize = textSize.toFloat()
+//        }
 
 
         // Todo (Step 3: Pass lambda to adapter)
-        recyclerView.adapter = NumberDisplayAdapter(numbers)
-
-
+//        recyclerView.adapter = NumberDisplayAdapter(numbers, callback)
+        recyclerView.adapter = NumberDisplayAdapter(numbers) {
+            displayTextView.textSize = it.toFloat()
+        }
     }
-
 }
